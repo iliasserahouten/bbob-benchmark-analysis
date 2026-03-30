@@ -15,7 +15,7 @@
 \IEEEauthorblockN{Iliass Erahouten et Aya Eddib}
 \IEEEauthorblockA{D\'epartement d'Informatique\\
 \'Ecole d'Ing\'enieurs du Littoral C\^ote d'Opale (EILCO)\\
-Iliass.Erahoutenb@etu.eilco.univ-littoral.fr, Aya.Eddib@etu.eilco.univ-littoral.fr}
+Iliass.Erahouten@etu.eilco.univ-littoral.fr, Aya.Eddib@etu.eilco.univ-littoral.fr}
 }
 
 \begin{document}
@@ -29,7 +29,7 @@ L'analyse s'appuie sur les donn\'ees brutes d'ex\'ecution, en consid\'erant \`a 
 
 Les r\'esultats montrent que BIPOP-CMA-ES offre la meilleure robustesse et atteint g\'en\'eralement les plus faibles erreurs finales, notamment sur les fonctions complexes. PSO-BFGS se distingue par sa rapidit\'e sur des fonctions simples ou structur\'ees, tandis que RANDOMSEARCH-5 sert de r\'ef\'erence de base.
 
-Ces r\'esultats soulignent qu'aucun algorithme n'est universellement optimal et que le choix de la m\'ethode d\'epend fortement des caract\'eristiques du probl\`eme et du budget d'\'evaluations. Tous les scripts et les donn\'ees sont mis \`a disposition sur Zenodo (DOI : \`a compl\'eter) afin de garantir la reproductibilit\'e des r\'esultats.
+Ces r\'esultats soulignent qu'aucun algorithme n'est universellement optimal et que le choix de la m\'ethode d\'epend fortement des caract\'eristiques du probl\`eme et du budget d'\'evaluations. Tous les scripts et les donn\'ees sont mis \`a disposition sur Zenodo (DOI : \url{https://doi.org/10.5281/zenodo.19339648}) afin de garantir la reproductibilité des résultats.
 \end{abstract}
 
 % ============================================================
@@ -41,7 +41,7 @@ Dans ce contexte, le principal d\'efi r\'eside dans le choix d'un algorithme eff
 
 La plateforme COCO/BBOB~\cite{hansen2021coco} fournit un cadre standardis\'e pour \'evaluer et comparer des algorithmes d'optimisation sur un ensemble de fonctions aux propri\'et\'es vari\'ees, allant de fonctions simples et unimodales \`a des fonctions hautement multimodales et trompeuses. Elle permet ainsi de r\'ealiser des analyses reproductibles et objectives des performances des algorithmes dans des contextes contr\^ol\'es.
 
-Dans ce travail, nous comparons trois algorithmes aux approches contrast\'ees : BIPOP-CMA-ES~\cite{hansen2009bipop}, un algorithme \'evolutionnaire robuste bas\'e sur l'adaptation de la matrice de covariance ; PSO-BFGS~\cite{voglis2012mempsode}, une m\'ethode hybride combinant exploration globale et optimisation locale ; et RANDOMSEARCH-5~\cite{auger2009random}, une strat\'egie al\'eatoire servant de r\'ef\'erence de base.
+Dans ce travail, nous comparons trois algorithmes aux approches contrast\'ees : BIPOP-CMA-ES~\cite{hansen2009bipop}, un algorithme \'evolutionnaire robuste bas\'e sur l'adaptation de la matrice de covariance ; PSO-BFGS~\cite{voglis2012mempsode}, une m\'ethode hybride combinant exploration globale et optimisation locale ; et RANDOMSEARCH-5~\cite{brockhoff2017randomsearch}, une strat\'egie al\'eatoire servant de r\'ef\'erence de base.
 
 L'objectif de cette \'etude est d'analyser et de comparer ces algorithmes en termes de pr\'ecision, de vitesse de convergence et de robustesse, afin de mieux comprendre dans quels contextes chacun d'eux est le plus adapt\'e. Plus pr\'ecis\'ement, nous cherchons \`a identifier les conditions dans lesquelles un algorithme surpasse les autres, et \`a mettre en \'evidence les compromis entre rapidit\'e et fiabilit\'e.
 
@@ -60,7 +60,7 @@ La m\'etrique principale utilis\'ee est $\Delta f = f(x) - f(x^*)$, qui mesure l
 
 \textbf{PSO-BFGS} est une approche hybride combinant l'optimisation par essaim particulaire (PSO) pour l'exploration globale et la m\'ethode quasi-newtonienne BFGS pour le raffinement local, ce qui am\'eliore la vitesse de convergence sur certaines classes de fonctions~\cite{voglis2012mempsode}.
 
-\textbf{RANDOMSEARCH-5} repose sur un \'echantillonnage al\'eatoire uniforme de l'espace de recherche, avec un budget de $5 \times 10^7 \cdot D$ \'evaluations. Il constitue une m\'ethode de r\'ef\'erence simple, permettant de mesurer le gain apport\'e par des algorithmes plus sophistiqu\'es~\cite{auger2009random}.
+\textbf{RANDOMSEARCH-5} repose sur un \'echantillonnage al\'eatoire uniforme de l'espace de recherche, avec un budget de $5 \times 10^7 \cdot D$ \'evaluations. Il constitue une m\'ethode de r\'ef\'erence simple, permettant de mesurer le gain apport\'e par des algorithmes plus sophistiqu\'es~\cite{brockhoff2017randomsearch}.
 
 % ============================================================
 \section{Protocole Exp\'erimental}
@@ -113,7 +113,7 @@ Nous commen\c{c}ons par analyser l'ex\'ecution de l'algorithme BIPOP-CMA-ES sur 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig1_single_run.png}
+    \includegraphics[width=\columnwidth]{plot/single_run_BIPOP-CMA-ES_f1.pdf}
     \caption{Courbe de convergence pour un run individuel de BIPOP-CMA-ES.}
     \label{fig:single_run}
 \end{figure}
@@ -128,14 +128,14 @@ Afin d'\'evaluer la robustesse de BIPOP-CMA-ES, nous analysons plusieurs runs in
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig2_multi_runs.png}
+    \includegraphics[width=\columnwidth]{plot/all_runs_BIPOP-CMA-ES_f1.pdf}
     \caption{Courbes de convergence pour 15 runs ind\'ependants de BIPOP-CMA-ES.}
     \label{fig:multi_runs}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig3_boxplot_f1.png}
+    \includegraphics[width=\columnwidth]{boxplot.pdf}
     \caption{Distribution des performances finales pour f1 (boxplot).}
     \label{fig:boxplot_f1}
 \end{figure}
@@ -152,7 +152,7 @@ Ces r\'esultats montrent que BIPOP-CMA-ES pr\'esente une excellente robustesse s
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig4_per_function.png}
+    \includegraphics[width=\columnwidth]{convergence_all_functions.pdf}
     \caption{Courbes de convergence de BIPOP-CMA-ES sur les cinq fonctions BBOB (m\'ediane sur 15 runs, dim=10).}
     \label{fig:per_function}
 \end{figure}
@@ -189,7 +189,7 @@ Cette comparaison repose sur plusieurs outils compl\'ementaires, incluant les co
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig5_convergence_comparison.png}
+    \includegraphics[width=\columnwidth]{plot/convergence_all.pdf}
     \caption{Comparaison des courbes de convergence.}
     \label{fig:convergence_comp}
 \end{figure}
@@ -199,7 +199,7 @@ PSO-BFGS converge plus rapidement sur les fonctions simples, tandis que BIPOP-CM
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig6_boxplots_comparison.png}
+    \includegraphics[width=\columnwidth]{plot/boxplots_all.pdf}
     \caption{Comparaison des performances finales.}
     \label{fig:boxplots_comp}
 \end{figure}
@@ -209,12 +209,14 @@ Les r\'esultats montrent une meilleure performance de PSO-BFGS sur les fonctions
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig7_ecdf.png}
+    \includegraphics[width=\columnwidth]{ecdf_all_functions.pdf}
     \caption{ECDF agr\'eg\'ee pour toutes les fonctions (target $\Delta f \leq 10^{-2}$).}
     \label{fig:ecdf}
 \end{figure}
 
 \subsubsection{ECDF agr\'eg\'ee et analyse d\'etaill\'ee}
+
+Les courbes ECDF sont largement utilis\'ees dans la plateforme BBOB pour comparer de mani\`ere globale les performances des algorithmes en termes de vitesse et de taux de succ\`es~\cite{hansen2021coco}.
 
 La figure~\ref{fig:ecdf} pr\'esente les courbes ECDF pour l'ensemble des fonctions \'etudi\'ees, permettant d'\'evaluer simultan\'ement le taux de succ\`es et la vitesse de convergence des algorithmes.
 
@@ -226,7 +228,7 @@ En revanche, sur les fonctions multimodales, les diff\'erences deviennent signif
 
 Sur f20 (Schwefel), BIPOP-CMA-ES conserve une performance \'elev\'ee (15/15), tandis que PSO-BFGS n'atteint la cible que dans un nombre tr\`es limit\'e de runs (1/15), confirmant sa sensibilit\'e aux fonctions irr\'eguli\`eres.
 
-Enfin, sur la fonction f24 (Lunacek), extr\^emement difficile, les performances chutent fortement pour tous les algorithmes. BIPOP-CMA-ES ne r\'eussit que dans un seul run (1/15), tandis que PSO-BFGS et RANDOMSEARCH-5 \'echouent compl\`etement (0/15). Cela souligne la complexit\'e du paysage d'optimisation et les limites des m\'ethodes \'etudi\'ees.
+Enfin, sur la fonction f24 (Lunacek), extr\^emement difficile, les performances chutent fortement pour tous les algorithmes. BIPOP-CMA-ES ne r\'eussit que dans un seul run (1/15), tandis que PSO-BFGS et RANDOMSEARCH-5 \'echouent compl\`etement (0/15); Ce comportement est attendu, car les m\'ethodes de recherche al\'eatoire pure souffrent fortement de la dimension du probl\`eme et de l'absence de m\'ecanisme d'apprentissage~\cite{auger2009random}.. Cela souligne la complexit\'e du paysage d'optimisation et les limites des m\'ethodes \'etudi\'ees.
 
 RANDOMSEARCH-5, quant \`a lui, ne parvient \`a r\'esoudre aucune fonction dans les conditions test\'ees (0/15 pour toutes les fonctions), ce qui confirme son r\^ole de r\'ef\'erence de base.
 
@@ -270,7 +272,7 @@ Cette m\'etrique p\'enalise les algorithmes peu fiables : un algorithme ayant un
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig8_ert.png}
+    \includegraphics[width=\columnwidth]{plot/ert_bar_chart.pdf}
     \caption{ERT par fonction pour $\Delta f \leq 10^{-2}$ (dim=10). Le symbole $\infty$ indique qu'aucun run n'a atteint la cible.}
     \label{fig:ert}
 \end{figure}
@@ -302,7 +304,7 @@ Cette analyse par l'ERT quantifie pr\'ecis\'ement le compromis entre les algorit
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig9_proportion.png}
+    \includegraphics[width=\columnwidth]{plot/ecdf_aggregated.pdf}
     \caption{Proportion de probl\`emes r\'esolus en fonction de la pr\'ecision cible $\Delta f$ (dim=10).}
     \label{fig:proportion}
 \end{figure}
@@ -321,7 +323,7 @@ Cette analyse met en \'evidence une diff\'erence fondamentale entre les algorith
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{fig10_heatmap.png}
+    \includegraphics[width=\columnwidth]{plot/heatmap_performance.pdf}
     \caption{Heatmap des performances relatives ($\log_{10}(\Delta f)$ m\'ediane) pour chaque algorithme et fonction (dim=10).}
     \label{fig:heatmap}
 \end{figure}
@@ -465,7 +467,7 @@ Dans une perspective future, plusieurs extensions peuvent \^etre envisag\'ees. I
 En conclusion, ce travail confirme que l'optimisation bo\^ite noire reste un domaine o\`u le choix de l'algorithme est fortement d\'ependant du contexte, et qu'une analyse exp\'erimentale rigoureuse constitue un outil essentiel pour guider ce choix.
 
 % ============================================================
-\begin{thebibliography}{5}
+\begin{thebibliography}{6}
 
 \bibitem{hansen2021coco}
 N.~Hansen, A.~Auger, R.~Ros, O.~Mersmann, T.~Tu\v{s}ar, and D.~Brockhoff,
@@ -487,8 +489,14 @@ A.~Auger and R.~Ros,
 ``Benchmarking the pure random search on the BBOB-2009 testbed,''
 in \textit{Proc. GECCO Companion}, 2009.
 
+\bibitem{brockhoff2017randomsearch}
+D.~Brockhoff,
+``COCO BBOB Benchmark Data for RANDOMSEARCH-5,''
+2017. [Online]. Available: \url{https://numbbo.github.io/data-archive/}
+
 \bibitem{numbbo2024}
-numbbo, ``BBOB Data Archive,''
+numbbo,
+``BBOB Data Archive,''
 \url{https://numbbo.github.io/data-archive/}, consult\'e en 2024.
 
 \end{thebibliography}
