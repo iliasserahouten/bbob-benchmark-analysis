@@ -96,7 +96,7 @@ Si vous utilisez ce travail, merci de citer :
 @misc{erahouten2025bbob,
   author       = {Erahouten, Iliass and Eddib, Aya},
   title        = {Analyse Comparative d'Algorithmes d'Optimisation Boîte Noire sur le Benchmark BBOB},
-  year         = {2025},
+  year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.19339648},
   url          = {https://doi.org/10.5281/zenodo.19339648}
